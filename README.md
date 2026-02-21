@@ -1,4 +1,4 @@
-📚 Darkloing EPUB Toolkit
+📚 Darkling EPUB Toolkit
 
 A deterministic, safe, and highly optimized Python utility for cleaning, repairing, and standardizing EPUB files.
 
