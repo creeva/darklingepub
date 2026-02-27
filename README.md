@@ -316,17 +316,6 @@ The log file (when `--log-file` is active) always captures all levels regardless
 
 ---
 
-## Interactive Controls
-
-While the batch job is running, the terminal displays a split-screen layout with a scrolling log and a live progress bar. Two keys are active:
-
-| Key | Action |
-|---|---|
-| `Q` | Quit after the current book(s) finish. Already-running workers complete normally; no new books are started. |
-| `P` | Pause / resume. Pauses between books (in-progress books finish). |
-
----
-
 ## Understanding the Output
 
 A typical run at default log level looks like:
