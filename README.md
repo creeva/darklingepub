@@ -357,9 +357,3 @@ The book's EPUB structure was too broken to safely write a valid output. The ori
 
 **DRM-protected books are just skipped.**
 Correct. The script never attempts to modify DRM-protected files.
-
----
-
-## License
-
-Personal use. Not affiliated with any e-reader manufacturer or retailer.
