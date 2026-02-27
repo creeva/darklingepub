@@ -4,6 +4,13 @@ A batch EPUB optimiser and metadata cleaner for personal e-reader libraries. Pro
 
 ---
 
+## Editor's Note
+
+This script (and README except for this section) was vibe coded.  It was a test to take some of my existing scripts and functions I would like to have to add it into a script.  Feel free to take a modify the script - like any AI generated script, users should be sure to backup their original files.  Original files by default should not be modified in anyway and it generates clean copies - but to be sure make sure you have backup of your original files. 
+
+
+---
+
 ## ⚠️ What This Script Will Change — Read Before Running
 
 This tool makes **permanent, opinionated changes** to your EPUB files. Output files are written to a separate directory in batch mode, so originals are preserved — but in `--metadata-only` mode, files are edited **in-place**. Always keep backups.
