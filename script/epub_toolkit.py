@@ -14,6 +14,7 @@
 #   python epub_toolkit.py --metadata-only --dry-run *.epub
 #   python epub_toolkit.py --kindle --inject-justify
 #   python epub_toolkit.py --log-level note --log-file
+#   Version 1.1
 
 import argparse
 import os
@@ -1933,7 +1934,20 @@ def clean_opf_metadata_xml(opf_path: str,
             isbn_ids = [c for c in all_ids if _is_isbn(c)]
             keeper   = isbn_ids[0] if isbn_ids else all_ids[0]
             # Ensure keeper has id="BookId" and package unique-identifier points to it
+            old_keeper_id = keeper.get("id")  # remember old id before renaming
             keeper.set("id", "BookId")
+            # Re-point any <meta refines="#old-id"> to #BookId so they survive
+            # the orphan-refines sweep (e.g. identifier-type, which macOS Books
+            # uses for cover thumbnail lookup).
+            if old_keeper_id and old_keeper_id != "BookId":
+                old_ref = f"#{old_keeper_id}"
+                for meta_el in list(metadata_el):
+                    if (_tag_local(meta_el) == "meta"
+                            and meta_el.get("refines") == old_ref):
+                        meta_el.set("refines", "#BookId")
+                        if verbose:
+                            print(f"    Updated refines: '{old_ref}' → '#BookId' "
+                                  f"(property='{meta_el.get('property')}')")
             for c in all_ids:
                 if c is not keeper: metadata_el.remove(c)
             # Patch package unique-identifier attribute
